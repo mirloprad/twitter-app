@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Twitter App</title>
+    <link rel="stylesheet" href="css/customStyle.css">
+    <script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+        var url = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+        var id = url[0].split('=')[1];
+          $.get("/api/user/"+id, function(data) {
+            $("#name").append(data.profileInfo.title);
+            $("#photo").append("<img src='" + data.profileInfo.imageUrl + "'>");
+            $("#description").append(data.profileInfo.description);
+            $("#twitterUser").append(data.profileInfo.twitterUserName);
+            $.each(data.tweetList, function(index, value) {
+                $("#timeLine").append("<li>"+value.text+"</br>"+value.createdAt+"</li>");
+            });
+          });
+        });
+    </script>
+</head>
+<body>
+<div class="wrapper">
+    <div class="userInfo">
+        <div id="photo" class="userPhoto"></div>
+        <h1 id="name" class="userName"></h1>
+        <div id="description" class="userDesc"></div>
+    </div>
+    <div class="twitterFeed">
+        <span>Twitter timeline:</span>
+        <div id="twitterUser" class="userTwitterName"></div>
+        <div class="timeLine">
+            <ul id="timeLine"></ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>
