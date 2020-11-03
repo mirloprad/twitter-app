@@ -26,6 +26,10 @@ Technology used to build this application:
  - Gradle.
  
 ```
+Web pages to retrieve data:
+http://localhost:8080/index.html (Get All Users's Portfolio)
+http://localhost:8080/user.html?id=1 (Get User's Portfolio Detail)
+
 Services:
 
 Get All Users:
