@@ -26,7 +26,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 @AutoConfigureMockMvc
-class TwitterAppApplicationTests {
+class TwitterAppIntegrationTests {
 
     @Autowired
     private MockMvc mockMvc;
